@@ -1,0 +1,19 @@
+#{extends 'main.html' /}
+#{set title:'Station' /}
+
+#{menu id:"dashboard"/}
+
+<section class="ui segment">
+  <h2 class="ui header">
+    ${station.name}
+  </h2>
+  #{currentreadings station:station, latestReading:latestReading, tempTrend:tempTrend,
+  weatherNow:weatherNow, fahrenheit:fahrenheit, minTemp:minTemp, maxTemp:maxTemp,
+  beaufortLevel:beaufortLevel, beaufortScale:beaufortScale,
+  windChill:windChill, windCompass:windCompass, minWindSpeed:minWindSpeed, maxWindSpeed:maxWindSpeed,
+  windTrend:windTrend, minPressure:minPressure, maxPressure:maxPressure, pressureTrend:pressureTrend /}
+  #{listreadings station:station /}
+  #{addreading station:station /}
+
+</section>
+

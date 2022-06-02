@@ -1,0 +1,165 @@
+<div class="ui stackable five column grid">
+    <div class="column">
+        <div class ="blue ui segment" style="background-color:black;">
+            <i class="large map marker icon" style="color: mediumpurple"></i>
+            <header style="color: white;">
+                ${_station.name} <br>
+            </header>
+            <p style="color: #bbbbbb; font-size: 0.8em">
+                <br>
+                Lat: ${_station.latitude} <br>
+                Long: ${_station.longitude}<br><br><br>
+            </p>
+        </div>
+    </div>
+    <div class="column">
+        <div class ="blue ui segment" style="background-color:black;">
+            #{if _latestReading}
+            #{if _latestReading.code == 100}
+            <i class="large sun icon" style="color: cornflowerblue; font-size: 1.5em"></i>
+            #{/if}
+            #{else}
+            #{if _latestReading.code == 200}
+            <i class="Large cloud sun icon" style="color: cornflowerblue; font-size: 1.5em"></i>
+            #{/if}
+            #{else}
+            #{if _latestReading.code == 300}
+            <i class="Large cloud meatball icon" style="color: cornflowerblue; font-size: 1.5em"></i>
+            #{/if}
+            #{else}
+            #{if _latestReading.code == 400}
+            <i class="Large cloud sun rain icon" style="color: cornflowerblue; font-size: 1.5em"></i>
+            #{/if}
+            #{else}
+            #{if _latestReading.code == 500}
+            <i class="Large cloud showers heavy icon" style="color: cornflowerblue; font-size: 1.5em"></i>
+            #{/if}
+            #{else}
+            #{if _latestReading.code == 600}
+            <i class="Large umbrella icon" style="color: cornflowerblue; font-size: 1.5em"></i>
+            #{/if}
+            #{else}
+            #{if _latestReading.code == 700}
+            <i class="Large snowflake icon" style="color: cornflowerblue; font-size: 1.5em"></i>
+            #{/if}
+            #{else}
+            #{if _latestReading.code == 800}
+            <i class="Large bolt icon" style="color: cornflowerblue; font-size: 1.5em"></i>
+            #{/if}
+            #{/else}
+            #{/else}
+            #{/else}
+            #{/else}
+            #{/else}
+            #{/else}
+            #{/else}
+            #{/if}
+            #{else}
+            <p> No Readings! </p>
+            #{/else}
+
+            <p style="color: white;">
+                Weather</p>
+            <p style="color: #bbbbbb; font-size: 0.8em">
+                #{if _latestReading.code}
+                ${_weatherNow} <br><br><br><br>
+                #{/if}
+                #{else}
+                <p> No Readings! </p>
+                #{/else}
+
+            </p>
+        </div>
+    </div>
+    <div class="column">
+        <div class ="blue ui segment" style="background-color:black;">
+            <i class="large temperature high icon" style="color: red"></i>
+            <p style="color: white;">
+                Temp</p>
+            <p style="color: #bbbbbb; font-size: 0.8em">
+                #{if _latestReading}
+                ${_latestReading.temp} deg C
+                #{if _tempTrend == "Falling"}
+                <i class="large arrow down icon" style="color: red"></i>
+                #{/if}
+                #{else}
+                #{if _tempTrend == "Rising"}
+                <i class="large arrow up icon" style="color: red"></i>
+                #{/if}
+                #{else}
+                <i class="large arrow right icon" style="color: red"></i>
+                #{/else}
+                #{/else}
+                <br>
+                ${_fahrenheit} deg F <br>
+                min:  ${_minTemp} C
+                max:  ${_maxTemp} C <br><br>
+                #{/if}
+                #{else}
+                <p> No Readings! </p>
+                #{/else}
+                </p>
+        </div>
+    </div>
+    <div class="column">
+        <div class ="blue ui segment" style="background-color:black;">
+
+            <i class="large wind icon" style="color: green"></i>
+            <p style="color: white;">
+                Wind</p>
+            <p style="color: #bbbbbb; font-size: 0.8em">
+                #{if _latestReading}
+                ${_beaufortLevel} bft ....
+                ${_beaufortScale}
+                #{if _windTrend == "Falling"}
+                <i class="large arrow down icon" style="color: green"></i>
+                #{/if}
+                #{else}
+                #{if _windTrend == "Rising"}
+                <i class="large arrow up icon" style="color: green"></i>
+                #{/if}
+                #{else}
+                <i class="large arrow right icon" style="color: green"></i>
+                #{/else}
+                #{/else}
+                <br>
+                Feels like  ${_windChill} C<br>
+                Direction: ${_windCompass} <br>
+                min: ${_minWindSpeed} max: ${_maxWindSpeed} kph
+                #{/if}
+                #{else}
+                <p> No Readings! </p>
+                #{/else}
+            </p>
+        </div>
+    </div>
+    <div class="column">
+        <div class ="blue ui segment" style="background-color:black;">
+            <i class="large tachometer alternate icon" style="color: orange"></i>
+            <p style="color: white;">
+                Pressure</p>
+            <p style="color: #bbbbbb; font-size: 0.8em">
+                #{if _latestReading}
+                ${_latestReading.pressure}
+                #{if _pressureTrend == "Falling"}
+                <i class="large arrow down icon" style="color: orange"></i>
+                #{/if}
+                #{else}
+                #{if _pressureTrend == "Rising"}
+                <i class="large arrow up icon" style="color: orange"></i>
+                #{/if}
+                #{else}
+                <i class="large arrow right icon" style="color: orange"></i>
+                #{/else}
+                #{/else}
+                <br><br>
+                #{/if}
+                min: ${_minPressure} hpa <br>
+                max: ${_maxPressure} hpa
+                #{else}
+                <p> No Readings! </p>
+                #{/else}
+            </p>
+        </div>
+    </div>
+</div>
